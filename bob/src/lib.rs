@@ -1,6 +1,7 @@
 pub fn reply(message: &str) -> &str {
-    let is_yelling =
-        |m: &str| m.chars().filter(|c| c.is_alphabetic()).count() > 0 && m.to_uppercase() == m;
+    fn is_yelling(m: &str) -> bool {
+        m.contains(char::is_alphabetic) && !m.contains(char::is_lowercase)
+    }
 
     match message.trim() {
         m if m.is_empty() => "Fine. Be that way!",
